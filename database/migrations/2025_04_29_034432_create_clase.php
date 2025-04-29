@@ -17,8 +17,8 @@ return new class extends Migration
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->string('estado', 15);
-            $table->string('comentario_Inst', 250);
-            $table->string('reporte_estudiante', 100);
+            $table->string('comentario_Inst', 250)->nullable();
+            $table->string('reporte_estudiante', 100)->nullable();
             $table->unsignedBigInteger('id_paquete');
             $table->string('placa', 20);
             $table->unsignedBigInteger('id_inst');

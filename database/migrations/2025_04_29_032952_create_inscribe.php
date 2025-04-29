@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('inscribe', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_Insc');
-            $table->char('categoria_actual');
+            $table->char('categoria_actual')->nullable();
             $table->unsignedBigInteger('id_categoria');
             $table->unsignedBigInteger('id_pago');
             $table->unsignedBigInteger('id_paquete');
