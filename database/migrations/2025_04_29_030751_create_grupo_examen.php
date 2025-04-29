@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('grupo_examen', function (Blueprint $table) {
             $table->id();
+            $table->string('estado', 15);
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->integer('capacidad');
+            $table->dateTime('fecha_hora');
             $table->timestamps();
         });
     }

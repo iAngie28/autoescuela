@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('paq_clases', function (Blueprint $table) {
+        Schema::create('paquete', function (Blueprint $table) {
             $table->id();
             $table->integer('cant_class');
             $table->integer('capacidad_est');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('paq_clases');
+        Schema::dropIfExists('paquete');
     }
 };
