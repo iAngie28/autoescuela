@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notificaciones', function (Blueprint $table) {
-            $table->id('id_not')->primary();
+            $table->id();
             $table->string('mensaje', length: 255);
             $table->string('tipo', length: 15);
             $table->date('fecha');

@@ -4,19 +4,40 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Rol
+ *
+ * @property $id
+ * @property $nombre
+ * @property $permisos
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Usuario[] $usuarios
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Rol extends Model
 {
-    // Nombre de la tabla (opcional si sigue convención de nombres)
-    protected $table = 'rol';
+    
+    protected $perPage = 20;
 
-    // Constantes para los roles (como las que mostraste)
-    const ADMINISTRADOR = 1;
-    const INSTRUCTOR = 2;
-    const USUARIO = 3;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    //Esto es necesario agregar manualmente
+    protected $table = 'rol'; // Nombre de la tabla
+    protected $fillable = ['nombre', 'permisos'];
 
-    // Campos que se pueden llenar masivamente (importante para crear/actualizar)
-    protected $fillable = [
-        'nombre',
-        'permisos'
-    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function usuarios()
+    {
+        return $this->hasMany(\App\Models\Usuario::class, 'id', 'id_rol');
+    }
+    
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('telefono');
             $table->string('direccion', length: 25);
             $table->date('fch_reg');
-            $table->foreignId('id_rol')->constrained('rol', 'id_rol');
+            $table->foreignId('id_rol')->constrained('rol', 'id');
             $table->timestamps();
         });
     }

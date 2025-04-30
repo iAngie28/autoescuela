@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->primary(['id_not', 'id_user']);
             $table->foreign('id_not')
-            ->references('id_not')->on('notificaciones')
+            ->references('id')->on('notificaciones')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_user')
             ->references('id')->on('usuario')
