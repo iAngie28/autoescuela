@@ -7,6 +7,35 @@ php artisan make:migration create_tableName
 ```terminal
 php artisan migrate:fresh
 ```
+
+# En caso de que haya un error en la conexión
+- Al reiniciar la conexión es posible que la tabla sesión se deba reiniciar también:
+### Eliminar la migración antigua y crearla de nuevo
+
+Si crees que la migración está corrupta o quieres empezar desde cero:
+
+1. Elimina manualmente el archivo de migración que tenga el nombre similar a:
+
+```
+xxxx_xx_xx_xxxxxx_create_sessions_table.php
+```
+
+Lo encontrarás en:
+
+```
+database/migrations/
+```
+
+2. Luego, vuelve a generar la migración con:
+```bash
+php artisan session:table
+```
+
+3. Y finalmente, corre las migraciones:
+```bash
+php artisan migrate
+```
+
 # Estructura base
 ## Up()
 - Contiene los cambios a aplicar
