@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('user', length: 100)->unique();;
             $table->string('NombreCompleto', length: 75);
             $table->string('password', length: 100);
-            $table->char('sexo');
+            $table->enum('sexo', ['masculino', 'femenino', 'otro'])->default('otro');
             $table->integer('telefono');
             $table->string('direccion', length: 25);
-            $table->date('fch_reg');
+            $table->date('fch_reg')->default(now()->toDateString());
             $table->foreignId('id_rol')->constrained('rol', 'id');
             $table->timestamps();
         });

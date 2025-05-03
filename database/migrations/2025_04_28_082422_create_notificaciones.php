@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('mensaje', length: 255);
             $table->string('tipo', length: 15);
-            $table->date('fecha');
+            $table->date('fecha')->default(now()->toDateString());
             $table->timestamps();
         });
     }
