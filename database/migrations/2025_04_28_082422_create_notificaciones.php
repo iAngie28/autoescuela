@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('tipo', length: 15);
             $table->date('fecha')->default(now()->toDateString());
             $table->timestamps();
+
+            
         });
     }
 

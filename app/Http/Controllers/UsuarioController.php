@@ -9,6 +9,7 @@ use App\Http\Requests\UsuarioRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+
 class UsuarioController extends Controller
 {
     /**
@@ -66,8 +67,8 @@ class UsuarioController extends Controller
     public function edit($id): View
     {
         $usuario = Usuario::find($id);
-
-        return view('usuario.edit', compact('usuario'));
+        $roles = Rol::all();
+        return view('usuario.edit', compact('usuario', 'roles'));
     }
 
     /**

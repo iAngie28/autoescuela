@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\NotificacioneController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
@@ -12,7 +13,7 @@ Route::get('/', function () {
 Route::resource('rols', RolController::class);
 Route::resource('notificaciones', NotificacioneController::class);
 Route::resource('usuarios', UsuarioController::class);
-
+Route::resource('administradors', AdministradorController::class);
 
 
 Auth::routes();

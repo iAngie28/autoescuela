@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('administrador', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_adm')->primary();
+            $table->unsignedBigInteger('id')->primary();
             $table->string('turno', 10);
-    
-            $table->foreign('id_adm')
+
+            $table->timestamps();
+            $table->foreign('id')
             ->references('id')
             ->on('usuario')
             ->onUpdate('cascade')

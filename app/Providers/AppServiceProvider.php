@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Providers;
+namespace App\Observers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Usuario; // 👈 Añade esta importación
+use app\Observers\UsuarioObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Usuario::observe(UsuarioObserver::class);
     }
 }

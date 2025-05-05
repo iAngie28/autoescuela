@@ -58,9 +58,25 @@ class Usuario extends Model
      */
     public function administrador()
     {
-        return $this->hasOne(\App\Models\Administrador::class, 'id', 'id_adm');
+        return $this->hasOne(\App\Models\Administrador::class, 'id');
     }
-    
+    protected static function booted()
+    {
+        // Crear perfil con valores por defecto al crear usuario
+        static::created(function ($usuario) {
+            if ($usuario->id_rol  == 1){
+                $usuario->administrador()->create([
+                    'id' => $usuario->id,
+                    'turno' => 'mañana'
+                ]);
+            }
+        });
+
+        // Eliminar perfil al borrar usuario (opcional si ya tienes onDelete('cascade'))
+        static::deleting(function ($usuario) {
+            $usuario->administrador?->delete();
+        });
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -90,7 +106,7 @@ class Usuario extends Model
      */
     public function pagosAdministrador()
     {
-        return $this->hasMany(\App\Models\Pago::class, 'id', 'id_adm');
+        return $this->hasMany(\App\Models\Pago::class, 'id', 'id');
     }
     
     /**
