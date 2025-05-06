@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('placa', 20)->primary();
             $table->string('modelo', 20);
             $table->string('caracteristicas', 50);
+
             $table->unsignedBigInteger('tipo');
             $table->foreign('tipo')
             ->references('id')->on('tipo_vehiculo')

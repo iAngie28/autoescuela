@@ -14,10 +14,10 @@
                         <span class="card-title">{{ __('Update') }} Usuario</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('usuarios.update', $usuario->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="PUT" action="{{ route('usuarios.update', $usuario->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-                            @method('PUT')
+
                             @include('usuario.form')
 
                         </form>

@@ -17,7 +17,7 @@
                         <form method="POST" action="{{ route('usuarios.update', $usuario->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
-                            @method('PUT')
+
                             @include('usuario.form')
 
                         </form>

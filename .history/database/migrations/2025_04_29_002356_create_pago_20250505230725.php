@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('pago', function (Blueprint $table) {
             $table->id();
             $table->integer('monto');
-            $table->date('fecha')->default(now()->toDateString());
-            $table->integer('descuento')->default(0);
+            $table->date('fecha')->date('fecha')->default(now()->toDateString());
+            $table->integer('descuento');
             $table->unsignedBigInteger('id_est');
             $table->unsignedBigInteger('id_adm');
-            $table->timestamps();
+    
             $table->foreign('id_est')
             ->references('id')
             ->on('usuario')
