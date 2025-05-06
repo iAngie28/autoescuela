@@ -60,13 +60,35 @@ class Usuario extends Model
     {
         return $this->hasOne(\App\Models\Administrador::class, 'id');
     }
-    
+    protected static function booted()
+    {
+        // Crear perfil con valores por defecto al crear usuario
+        static::created(function ($usuario) {
+            if ($usuario->id_rol  == 1){
+                $usuario->administrador()->create([
+                    'id' => $usuario->id,
+                    'turno' => 'mañana'
+                ]);
+            }
+            if ($usuario->id_rol  == 2){
+                $usuario->estudiante()->create([
+                    'id' => $usuario->id,
+                    'fecha_reg' => $usuario->fch_reg
+                ]);
+            }
+        });
+
+        // Eliminar perfil al borrar usuario (opcional si ya tienes onDelete('cascade'))
+        static::deleting(function ($usuario) {
+            $usuario->administrador?->delete();
+        });
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function estudiante()
     {
-        return $this->hasOne(\App\Models\Estudiante::class, 'id');
+        return $this->hasOne(\App\Models\Estudiante::class, 'id', 'id_est');
     }
     
     /**
@@ -74,7 +96,7 @@ class Usuario extends Model
      */
     public function instructor()
     {
-        return $this->hasOne(\App\Models\Instructor::class, 'id');
+        return $this->hasOne(\App\Models\Instructor::class, 'id', 'id_inst');
     }
     
     /**
@@ -100,34 +122,5 @@ class Usuario extends Model
     {
         return $this->hasMany(\App\Models\Pago::class, 'id', 'id_est');
     }
-    protected static function booted()
-    {
-        // Crear perfil con valores por defecto al crear usuario
-        static::created(function ($usuario) {
-            if ($usuario->id_rol  == 1){
-                $usuario->administrador()->create([
-                    'id' => $usuario->id,
-                    'turno' => 'mañana'
-                ]);
-            }
-            if ($usuario->id_rol  == 2){
-                $usuario->estudiante()->create([
-                    'id' => $usuario->id,
-                    'fecha_reg' => now()
-                ]);
-            }
-            if ($usuario->id_rol  == 3){
-                $usuario->instructor()->create([
-                    'id' => $usuario->id,
-                    'categ_licencia' => 'A'
-                ]);
-            }
-        });
-
-        // Eliminar perfil al borrar usuario (opcional si ya tienes onDelete('cascade'))
-        static::deleting(function ($usuario) {
-            $usuario->administrador?->delete();
-            $usuario->estudiante?->delete();
-        });
-    }
+    
 }

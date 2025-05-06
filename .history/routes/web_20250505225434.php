@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\EstudianteController;
-use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\NotificacioneController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;

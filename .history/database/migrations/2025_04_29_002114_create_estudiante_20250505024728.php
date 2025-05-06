@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('estudiante', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
-            $table->date('fecha_reg')->default(now()->toDateString());
-            $table->timestamps();
-            $table->foreign('id')
+            $table->unsignedBigInteger('id_est')->primary();
+            $table->date('fecha_reg');
+    
+            $table->foreign('id_est')
             ->references('id')
             ->on('usuario')
             ->onUpdate('cascade')

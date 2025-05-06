@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estudiante', function (Blueprint $table) {
+        Schema::create('instructor', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->date('fecha_reg')->default(now()->toDateString());
-            $table->timestamps();
+            $table->string('categ_licencia', 10);
+    
             $table->foreign('id')
             ->references('id')
             ->on('usuario')
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estudiante');
+        Schema::dropIfExists('instructor');
     }
 };

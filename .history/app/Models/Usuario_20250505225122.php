@@ -119,7 +119,7 @@ class Usuario extends Model
             if ($usuario->id_rol  == 3){
                 $usuario->instructor()->create([
                     'id' => $usuario->id,
-                    'categ_licencia' => 'A'
+                    'fecha_reg' => now()
                 ]);
             }
         });

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('estudiante', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->date('fecha_reg')->default(now()->toDateString());
-            $table->timestamps();
+            $table->date('fecha_reg');
+    
             $table->foreign('id')
             ->references('id')
             ->on('usuario')

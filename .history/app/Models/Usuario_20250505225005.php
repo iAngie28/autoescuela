@@ -116,12 +116,6 @@ class Usuario extends Model
                     'fecha_reg' => now()
                 ]);
             }
-            if ($usuario->id_rol  == 3){
-                $usuario->instructor()->create([
-                    'id' => $usuario->id,
-                    'categ_licencia' => 'A'
-                ]);
-            }
         });
 
         // Eliminar perfil al borrar usuario (opcional si ya tienes onDelete('cascade'))

@@ -74,7 +74,7 @@ class Usuario extends Model
      */
     public function instructor()
     {
-        return $this->hasOne(\App\Models\Instructor::class, 'id');
+        return $this->hasOne(\App\Models\Instructor::class, 'id', 'id_inst');
     }
     
     /**
@@ -114,12 +114,6 @@ class Usuario extends Model
                 $usuario->estudiante()->create([
                     'id' => $usuario->id,
                     'fecha_reg' => now()
-                ]);
-            }
-            if ($usuario->id_rol  == 3){
-                $usuario->instructor()->create([
-                    'id' => $usuario->id,
-                    'categ_licencia' => 'A'
                 ]);
             }
         });
