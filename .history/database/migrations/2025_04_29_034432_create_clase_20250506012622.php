@@ -28,8 +28,8 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreign('id_vehiculo')
-            ->references('id')->on('vehiculo')
+            $table->foreign('placa')
+            ->references('placa')->on('vehiculo')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->id();
             $table->integer('CI')->unique();
-            $table->string('user', length: 100)->unique();
+            $table->string('user', length: 100)->unique();;
             $table->string('NombreCompleto', length: 75);
             $table->string('password', length: 100);
             $table->enum('sexo', ['masculino', 'femenino', 'otro'])->default('otro');
