@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\ExamenCategoriaAspiraController;
-use App\Http\Controllers\GrupoExamanController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\NotificacioneController;
 use App\Http\Controllers\PagoController;
@@ -29,7 +28,6 @@ Route::resource('tipo-vehiculos', TipoVehiculoController::class);
 Route::resource('vehiculos', VehiculoController::class);
 Route::resource('examen-categoria-aspiras', ExamenCategoriaAspiraController::class);
 Route::resource('paquetes', PaqueteController::class);
-Route::resource('grupo-examen', GrupoExamanController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
