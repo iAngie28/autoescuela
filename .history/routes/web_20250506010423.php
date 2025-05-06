@@ -8,6 +8,7 @@ use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TipoVehiculoController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\TipoVehiculo;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
